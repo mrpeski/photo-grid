@@ -1,0 +1,5 @@
+# Get all photos
+GET https://jsonplaceholder.typicode.com/photos
+
+# Get by albumId
+GET https://jsonplaceholder.typicode.com/photos?albumId=1
