@@ -4,7 +4,7 @@ function Photo({ url, thumbnailUrl, title }: PhotoProps): ReactElement {
     const [imgUrl, setImgUrl] = useState(url)
     const retryCount = useRef(3)
     return (
-        <article>
+        <article className="card">
             <img
                 src={imgUrl}
                 loading="lazy"
