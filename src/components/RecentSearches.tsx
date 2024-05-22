@@ -26,7 +26,6 @@ export function RecentSearches({ max }: RecentSearchesProps): ReactElement {
         saveRecentSearch(keyword)
     }, [keyword])
 
-    console.log(recentSearches)
     return recentSearches.length > 0 ? (
         <section>
             {recentSearches.map((item, index) => (
