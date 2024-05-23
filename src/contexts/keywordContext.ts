@@ -1,6 +1,9 @@
 import { createContext, useContext } from 'react'
 
-export interface KeywordContext {}
+export interface KeywordContext {
+    keyword: string
+    setKeyword: (arg: string) => void
+}
 
 export const Context = createContext<KeywordContext | null>(null)
 

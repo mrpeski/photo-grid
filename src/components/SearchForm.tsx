@@ -30,12 +30,14 @@ const SearchForm = ({ type, recentCount }: SearchInputProps) => {
         <>
             <form onSubmit={handleSubmit}>
                 <input
+                    className="search-input"
                     type="text"
                     value={value}
                     onChange={handleChange}
+                    placeholder="Search/Filter Photos by keyword"
                     required
                 />
-                <button>Search</button>
+                <button className="src-only">Search</button>
             </form>
             {type === 'search' ? <RecentSearches max={5} /> : null}
         </>

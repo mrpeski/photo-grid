@@ -5,8 +5,8 @@ export interface RecentSearchesProps {
     max: number
 }
 
-export function RecentSearches({ max }: RecentSearchesProps): ReactElement {
-    const [recentSearches, setRecentS] = useState([])
+export function RecentSearches({ max }: RecentSearchesProps) {
+    const [recentSearches, setRecentS] = useState<string[]>([])
 
     const { keyword, setKeyword } = useKeywordContext()
 
@@ -15,9 +15,10 @@ export function RecentSearches({ max }: RecentSearchesProps): ReactElement {
             if (recentSearches.length === max) {
                 recentSearches.shift()
             }
-            if (term) {
+            if (term && !recentSearches.includes(term)) {
                 return recentSearches.concat(term)
             }
+            return recentSearches
         })
     }
 
@@ -27,16 +28,20 @@ export function RecentSearches({ max }: RecentSearchesProps): ReactElement {
     }, [keyword])
 
     return recentSearches.length > 0 ? (
-        <section>
-            {recentSearches.map((item, index) => (
-                <button
-                    onClick={() => setKeyword(item === keyword ? '' : item)}
-                    key={`${keyword}-${index}`.toString('16')}
-                >
-                    {item}
-                </button>
-            ))}
-        </section>
+        <>
+            <h4 className="recent-title src-only">Recent Searches</h4>
+            <section className="recent-searches">
+                {recentSearches.map((item, index) => (
+                    <button
+                        className={`term ${item === keyword ? 'active' : ''}`}
+                        onClick={() => setKeyword(item === keyword ? '' : item)}
+                        key={`${keyword}-${index}`.toString('16')}
+                    >
+                        {item}
+                    </button>
+                ))}
+            </section>
+        </>
     ) : null
 }
 
