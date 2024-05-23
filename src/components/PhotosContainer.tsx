@@ -13,7 +13,7 @@ const PhotosContainer = () => {
     if (isLoading) return 'Loading...'
     return (
         <KeywordProvider>
-            <SearchForm recentCount={5} type="search" />
+            <SearchForm type="search" />
             <PhotoList data={data} onNext={loadMore} />
         </KeywordProvider>
     )

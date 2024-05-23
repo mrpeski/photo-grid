@@ -9,3 +9,8 @@ interface PhotoListProps {
     data: PhotoProps[]
     onNext?: () => Promise
 }
+interface ImageProps {
+    url: string
+    alt: string
+    onError: () => void
+}

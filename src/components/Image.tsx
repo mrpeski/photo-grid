@@ -1,4 +1,4 @@
-const Image = ({ onError, url, alt }) => {
+const Image = ({ onError, url, alt }: ImageProps) => {
     return <img src={url} loading="lazy" alt={alt} onError={() => onError()} />
 }
 
