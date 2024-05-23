@@ -4,10 +4,9 @@ import RecentSearches from '@/components/RecentSearches'
 
 export interface SearchInputProps {
     type: 'filter' | 'search'
-    recentCount: number
 }
 
-const SearchForm = ({ type, recentCount }: SearchInputProps) => {
+const SearchForm = ({ type }: SearchInputProps) => {
     const [value, setValue] = useState('')
     const { setKeyword } = useKeywordContext()
 
@@ -34,7 +33,7 @@ const SearchForm = ({ type, recentCount }: SearchInputProps) => {
                     type="text"
                     value={value}
                     onChange={handleChange}
-                    placeholder="Search/Filter Photos by keyword"
+                    placeholder="Search for products"
                     required
                 />
                 <button className="src-only">Search</button>

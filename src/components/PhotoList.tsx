@@ -16,7 +16,9 @@ const PhotoList = ({ data, onNext }: PhotoListProps) => {
     return (
         <div className="container">
             {items
-                .filter((itm: PhotoProps) => itm.title.includes(keyword))
+                .filter((itm: PhotoProps) =>
+                    itm.title.toLowerCase().includes(keyword.toLowerCase())
+                )
                 .map((item: PhotoProps, index) =>
                     index === items.length - 1 && currentPage <= pages ? (
                         <div ref={setLastElement} key={item.id}>

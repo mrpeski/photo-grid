@@ -14,7 +14,6 @@ const PhotosContainer = () => {
     return (
         <KeywordProvider>
             <SearchForm recentCount={5} type="search" />
-            <br />
             <PhotoList data={data} onNext={loadMore} />
         </KeywordProvider>
     )

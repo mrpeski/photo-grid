@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Photo from '../components/Photo.tsx'
+import Photo from '../../components/Photo'
 
 describe('Photo', () => {
     const item = {
@@ -9,6 +9,7 @@ describe('Photo', () => {
         url: 'https://via.placeholder.com/600/92c952',
         thumbnailUrl: 'https://via.placeholder.com/150/92c952',
     }
+
     it('should render Photo', () => {
         render(<Photo {...item} />)
 
@@ -17,7 +18,6 @@ describe('Photo', () => {
 
         expect(heading).toBeInTheDocument()
         expect(heading).toHaveTextContent(item.title)
-
         expect(img).toBeInTheDocument()
     })
 })

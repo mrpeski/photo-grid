@@ -7,5 +7,5 @@ interface PhotoProps {
 }
 interface PhotoListProps {
     data: PhotoProps[]
-    onNext: () => Promise
+    onNext?: () => Promise
 }

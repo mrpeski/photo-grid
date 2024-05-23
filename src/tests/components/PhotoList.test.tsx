@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import PhotoList from '../components/PhotoList.tsx'
-import KeywordProvider from '../components/KeywordProvider.tsx'
+import PhotoList from '../../components/PhotoList'
+import KeywordProvider from '../../components/KeywordProvider'
 
 beforeEach(() => {
     // IntersectionObserver isn't available in test environment
@@ -20,6 +20,7 @@ describe('PhotoList', () => {
                 <PhotoList data={[]} />
             </KeywordProvider>
         )
+
         expect(container).toBeEmptyDOMElement()
     })
 
@@ -45,7 +46,9 @@ describe('PhotoList', () => {
                 <PhotoList data={photos} />
             </KeywordProvider>
         )
+
         const images = screen.getAllByRole('img')
+
         expect(images).toHaveLength(2)
         photos.forEach((photo, index) => {
             expect(images[index]).toHaveAttribute('src', photo.url)
