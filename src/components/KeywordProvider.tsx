@@ -1,7 +1,9 @@
-import { type ReactElement, useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { Context as KeywordContext } from '@/contexts/keywordContext'
 
-export interface KeywordProviderProps {}
+export interface KeywordProviderProps {
+    children?: React.ReactNode
+}
 
 const KeywordProvider = (props: KeywordProviderProps) => {
     const [keyword, setKeyword] = useState('')

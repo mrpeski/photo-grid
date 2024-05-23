@@ -1,4 +1,4 @@
-import { type ReactElement, useState } from 'react'
+import { type FormEventHandler, type ChangeEventHandler, useState } from 'react'
 import { useKeywordContext } from '@/contexts/keywordContext'
 import RecentSearches from '@/components/RecentSearches'
 
@@ -11,12 +11,12 @@ const SearchForm = ({ type, recentCount }: SearchInputProps) => {
     const [value, setValue] = useState('')
     const { setKeyword } = useKeywordContext()
 
-    const handleSubmit = (event) => {
+    const handleSubmit: FormEventHandler = (event) => {
         event.preventDefault()
         setKeyword(value)
     }
 
-    const handleChange = (event) => {
+    const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
         setValue(event.target.value)
         if (Boolean(event.target.value) === false) {
             setKeyword('')

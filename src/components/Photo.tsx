@@ -1,6 +1,6 @@
 import { type ReactElement, useState, useRef } from 'react'
 
-function Photo({ url, thumbnailUrl, title }: PhotoProps): ReactElement {
+function Photo({ url, title }: PhotoProps): ReactElement {
     const [imgUrl, setImgUrl] = useState(url)
     const retryCount = useRef(3)
     return (

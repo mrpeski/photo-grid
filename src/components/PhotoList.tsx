@@ -3,8 +3,6 @@ import useInfiniteList from '@/hooks/useInfiniteList'
 import { useKeywordContext } from '@/contexts/keywordContext'
 
 const PhotoList = ({ data, onNext }: PhotoListProps) => {
-    if (data.length === 0) return null
-
     const {
         items = [],
         currentPage,
@@ -13,6 +11,8 @@ const PhotoList = ({ data, onNext }: PhotoListProps) => {
     } = useInfiniteList<PhotoProps>(data, onNext)
 
     const { keyword } = useKeywordContext()
+
+    if (data.length === 0) return null
     return (
         <div className="container">
             {items

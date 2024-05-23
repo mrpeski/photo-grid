@@ -1,4 +1,4 @@
-import { type ReactElement, useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useKeywordContext } from '@/contexts/keywordContext'
 
 export interface RecentSearchesProps {
@@ -10,22 +10,25 @@ export function RecentSearches({ max }: RecentSearchesProps) {
 
     const { keyword, setKeyword } = useKeywordContext()
 
-    const saveRecentSearch = (term: string) => {
-        setRecentS(() => {
-            if (recentSearches.length === max) {
-                recentSearches.shift()
-            }
-            if (term && !recentSearches.includes(term)) {
-                return recentSearches.concat(term)
-            }
-            return recentSearches
-        })
-    }
+    const saveRecentSearch = useCallback(
+        (term: string) => {
+            setRecentS(() => {
+                if (recentSearches.length === max) {
+                    recentSearches.shift()
+                }
+                if (term && !recentSearches.includes(term)) {
+                    return recentSearches.concat(term)
+                }
+                return recentSearches
+            })
+        },
+        [recentSearches, max]
+    )
 
     useEffect(() => {
         if (!keyword) return
         saveRecentSearch(keyword)
-    }, [keyword])
+    }, [keyword, saveRecentSearch])
 
     return recentSearches.length > 0 ? (
         <>
@@ -35,7 +38,7 @@ export function RecentSearches({ max }: RecentSearchesProps) {
                     <button
                         className={`term ${item === keyword ? 'active' : ''}`}
                         onClick={() => setKeyword(item === keyword ? '' : item)}
-                        key={`${keyword}-${index}`.toString('16')}
+                        key={`${keyword}-${index}`.toString()}
                     >
                         {item}
                     </button>

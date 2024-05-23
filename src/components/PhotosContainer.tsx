@@ -8,7 +8,7 @@ const PhotosContainer = () => {
     const [page, setPage] = useState(1)
     const { data, isLoading } = usePhotos(page)
 
-    const loadMore = useCallback(async () => fetchPhotos(page + 1), [])
+    const loadMore = useCallback(async () => fetchPhotos(page + 1), [page])
 
     if (isLoading) return 'Loading...'
     return (

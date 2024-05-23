@@ -42,7 +42,7 @@ const useInfiniteList = <T>(
                 observer.unobserve(lastElement)
             }
         }
-    }, [lastElement])
+    }, [lastElement, currentPage, items, next, pages])
 
     return { items, currentPage, pages, setLastElement }
 }
